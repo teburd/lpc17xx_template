@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     core_cmFunc.h
+ * @file     core_cm_func.h
  * @brief    CMSIS Cortex-M Core Function Access Header File
  * @version  V2.01
  * @date     06. December 2010

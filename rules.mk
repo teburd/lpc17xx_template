@@ -1,7 +1,7 @@
 # Standard things
 
 .SUFFIXES:
-.SUFFIXES:	.c .o
+.SUFFIXES:	.c .o .s
 
 all:		targets
 
@@ -10,17 +10,23 @@ all:		targets
 
 dir	:= cmsis
 include		$(dir)/rules.mk
-dir	:= firmware
-include		$(dir)/rules.mk
+#dir	:= firmware
+#include		$(dir)/rules.mk
 
 
 # General directory independent rules
 
+%.o:	%.s
+		@$(ACOMP)
+		@echo "Compiling $<"
+
 %.o:	%.c
-		$(COMP)
+		@$(CCOMP)
+		@echo "Compiling $<"
 
 %:		%.o
-		$(LINK)
+		@$(LINK)
+		@echo "Linking $<"
 
 %:		%.c
 		$(COMPLINK)

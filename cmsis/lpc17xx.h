@@ -1,5 +1,5 @@
 /**************************************************************************//**
- * @file     LPC17xx.h
+ * @file     lpc17xx.h
  * @brief    CMSIS Cortex-M3 Core Peripheral Access Layer Header File for
  *           NXP LPC17xx Device Series
  * @version: V1.08
@@ -101,7 +101,7 @@ typedef enum IRQn
 
 
 #include "core_cm3.h"                       /* Cortex-M3 processor and core peripherals           */
-#include "system_LPC17xx.h"                 /* System Header                                      */
+#include "system_lpc17xx.h"                 /* System Header                                      */
 
 
 /******************************************************************************/

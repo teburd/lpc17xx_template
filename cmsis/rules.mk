@@ -1,21 +1,22 @@
 # Standard things
 
-sp 		:= $(sp).x
+sp				:= $(sp).x
 dirstack_$(sp)	:= $(d)
-d		:= $(dir)
+d				:= $(dir)
 
 
-# Local rules and targets
+SRCS_$(d) 	:= $(wildcard $(d)/*.c)
+OBJS_$(d) 	:= $(SRCS_$(d):%.c=%.o)
 
-TGTS_$(d)	:= $(d)/cmsis
-DEPS_$(d)	:= $(TGTS_$(d):%=%.d)
+DEPS_$(d)	:= $(OBJS_$(d) :%=%.d)
 
-TGT_BIN		:= $(TGT_BIN) $(TGTS_$(d))
-CLEAN		:= $(CLEAN) $(TGTS_$(d)) $(DEPS_$(d))
+CLEAN		:= $(CLEAN) $(OBJS_$(d)) $(DEPS_$(d))
 
-$(TGTS_$(d)):	$(d)/Rules.mk
+$(OBJS_%(d)): CF_TGT := -I$(d)
 
-$(TGTS_$(d)):	CF_TGT := -Icommon -DRADDB=\"$(DIR_ETC)\"
-$(TGTS_$(d)):	LL_TGT := $(S_LL_INET) common/common.a
-$(TGTS_$(d)):	$(d)/radclient.c common/common.a
-		$(COMPLINK)
+$(d)/cmsis.a: $(OBJS_$(d))
+
+-include $(DEPS_$(d))
+
+d := $(dirstack_$(sp))
+sp := $(basename $(sp))
