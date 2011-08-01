@@ -17,8 +17,7 @@ include		$(dir)/rules.mk
 # General directory independent rules
 
 %.o:	%.s
-		@$(ACOMP)
-		@echo "Compiling $<"
+		$(ACOMP)
 
 %.o:	%.c
 		@$(CCOMP)
@@ -26,11 +25,14 @@ include		$(dir)/rules.mk
 
 %:		%.o
 		@$(LINK)
-		@echo "Linking $<"
+		@echo "Linking $^"
 
 %:		%.c
 		$(COMPLINK)
 
+%.a:
+		@$(ARCHIVE)
+		@echo "Archiving $@"
 
 # The variables TGT_*, CLEAN and CMD_INST* may be added to by the Makefile
 # fragments in the various subdirectories.

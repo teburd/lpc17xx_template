@@ -58,5 +58,6 @@ HEX		 		=.hex
 
 ACOMP			= $(AS) $(AS_ALL) $(AS_TGT) -o $@ -c $<
 CCOMP			= $(CC) $(CF_ALL) $(CF_TGT) -o $@ -c $<
+ARCHIVE 		= $(AR) $@ $^
 LINK			= $(CC) $(LF_ALL) $(LF_TGT) -o $@ $^ $(LL_TGT) $(LL_ALL)
 COMPLINK		= $(CC) $(CF_ALL) $(CF_TGT) $(LF_ALL) $(LF_TGT) -o $@ $< $(LL_TGT) $(LL_ALL)
