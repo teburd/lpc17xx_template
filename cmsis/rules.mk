@@ -1,9 +1,11 @@
-# Standard things
+# Setup
 
 sp				:= $(sp).x
 dirstack_$(sp)	:= $(d)
 d				:= $(dir)
 
+
+# Local rules
 
 SRCS_$(d) 	:= $(wildcard $(d)/*.c)
 OBJS_$(d) 	:= $(SRCS_$(d):%.c=%.o)
@@ -16,6 +18,9 @@ $(OBJS_%(d)): CF_TGT := -I$(d)
 
 $(d)/cmsis.a: $(OBJS_$(d))
 
+
+# Cleanup
+#
 -include $(DEPS_$(d))
 
 d := $(dirstack_$(sp))

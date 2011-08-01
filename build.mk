@@ -43,7 +43,7 @@ CODESIZE 		= $(GNUTOOLS)/arm-none-eabi-size
 LF_ALL			=  -static -mcpu=cortex-m3 -mthumb -mthumb-interwork
 LF_ALL			+= -Wl,--start-group 
 LF_ALL			+= -L$(THUMB2GNULIB) -L$(THUMB2GNULIB2)
-LF_ALL			+= -lc -lg -lstdc++ -lsupc++ 
+LF_ALL			+= -lc -lg
 LF_ALL			+= -lgcc -lm 
 LF_ALL			+= -Wl,--end-group 
 
