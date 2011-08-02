@@ -18,7 +18,7 @@ include		$(dir)/rules.mk
 
 %.o:	%.s
 		@$(ACOMP)
-		@echo "Compiling $<"
+		@echo "Assembling $<"
 
 %.o:	%.c
 		@$(CCOMP)
