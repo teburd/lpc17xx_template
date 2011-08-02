@@ -7,19 +7,18 @@ d := $(dir)
 SRCS_$(d) := $(wildcard $(d)/*.c)
 OBJS_$(d) := $(SRCS_$(d):%.c=%.o)
 
-# Define Object Dependenc
+# Define Object Dependencies
 DEPS_$(d) := $(OBJS_$(d):%.o=%.d)
 
-# Dependency Make Rules (created by GCC)
+# Include Dependency Make Rules (created by GCC)
 -include $(DEPS_$(d))
 
-# Object Rule
+# Object Rules
 $(OBJS_%(d)): CF_TGT := -I$(d)
 
-# Archive Rule
+# Archive Rules
 $(d)/cmsis.a: $(OBJS_$(d))
 
-# Clean Rule
 CLEAN := $(CLEAN) $(OBJS_$(d)) $(DEPS_$(d)) $(d)/cmsis.a
 
 
