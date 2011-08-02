@@ -25,7 +25,7 @@ $(HEX_$(d)):	$(ELF_$(d))
 
 DEPS_$(d)	:= $(OBJS_$(d) :%=%.d)
 
-CLEAN		:= $(CLEAN) $(OBJS_$(d)) $(DEPS_$(d)) $(d)/firmware.hex
+CLEAN		:= $(CLEAN) $(OBJS_$(d)) $(DEPS_$(d)) $(TGTS_$(d))
 
 $(OBJS_%(d)): CF_TGT := -I$(d)
 
