@@ -35,6 +35,15 @@ include		$(dir)/rules.mk
 		@$(ARCHIVE)
 		@echo "Archiving $@"
 
+%.elf:
+	@$(LINK)
+	@echo "Linking $@"
+
+%.hex:	%.elf
+	@$(ELF2HEX)
+	@echo "Hexifying $@"
+
+
 # The variables TGT_*, CLEAN and CMD_INST* may be added to by the Makefile
 # fragments in the various subdirectories.
 

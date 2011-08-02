@@ -18,8 +18,7 @@ CLEAN		:= $(CLEAN) $(TGTS_$(d)) $(DEPS_$(d))
 
 $(TGTS_$(d)):	CF_TGT := -Icmsis -DRADDB=\"$(DIR_ETC)\"
 $(TGTS_$(d)):	LL_TGT := $(S_LL_INET) cmsis/cmsis.a
-$(TGTS_$(d)):	$(SRCS_$(d)) cmsis/cmsis.a
-		$(COMPLINK)
+$(TGTS_$(d)):	$(OBJS_$(d)) cmsis/cmsis.a
 
 DEPS_$(d)	:= $(OBJS_$(d) :%=%.d)
 
