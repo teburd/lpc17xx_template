@@ -23,8 +23,10 @@ CF_ALL			+= -march=armv7-m
 CF_ALL			+= -mfix-cortex-m3-ldrd  
 CF_ALL			+= -ffunction-sections 
 CF_ALL			+= -fdata-sections 
+CF_ALL			+= -D__RAM_MODE__=1 
 
-AF_ALL			= -mcpu=$(CPU) 
+AF_ALL			= -mcpu=$(CPU)
+AF_ALL			+= --defsym RAM_MODE=1 
 
 CC       		= $(GNUTOOLS)/arm-none-eabi-gcc-$(GNU_VERSION)
 AS       		= $(GNUTOOLS)/arm-none-eabi-as
@@ -56,7 +58,7 @@ LEXT     		=
 REC      		=.srec
 HEX		 		=.hex
 
-ACOMP			= $(AS) $(AS_ALL) $(AS_TGT) -o $@ -c $<
+ACOMP			= $(AS) $(AS_ALL) $(AS_TGT) -o $@ $<
 CCOMP			= $(CC) $(CF_ALL) $(CF_TGT) -o $@ -c $<
 ARCHIVE 		= $(AR) $@ $^
 LINK			= $(CC) $(LF_ALL) $(LF_TGT) -o $@ $^ $(LL_TGT) $(LL_ALL)

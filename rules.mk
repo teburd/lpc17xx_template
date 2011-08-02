@@ -17,7 +17,8 @@ include		$(dir)/rules.mk
 # General directory independent rules
 
 %.o:	%.s
-		$(ACOMP)
+		@$(ACOMP)
+		@echo "Compiling $<"
 
 %.o:	%.c
 		@$(CCOMP)
