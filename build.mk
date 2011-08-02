@@ -22,6 +22,7 @@ CF_ALL			+= -fno-hosted
 #CF_ALL			+= -mfix-cortex-m3-ldrd  
 CF_ALL			+= -ffunction-sections 
 CF_ALL			+= -fdata-sections 
+CF_ALL			+= -MD
 
 AS_ALL			= -mcpu=$(CPU)
 

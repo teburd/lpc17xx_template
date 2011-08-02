@@ -5,4 +5,4 @@
 *.hex
 *.map
 *.elf
-
+*.d
