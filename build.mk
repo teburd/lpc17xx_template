@@ -11,15 +11,15 @@ CF_ALL			+= -mcpu=$(CPU)
 CF_ALL			+= -mthumb 
 CF_ALL			+= -Wall 
 CF_ALL			+= -O$(OPTIM) 
-CF_ALL			+= -mapcs-frame 
-CF_ALL			+= -D__thumb2__=1 
+#CF_ALL			+= -mapcs-frame 
+#CF_ALL			+= -D__thumb2__=1 
 CF_ALL			+= -msoft-float 
-CF_ALL			+= -gdwarf-2 
-CF_ALL			+= -mno-sched-prolog 
+#CF_ALL			+= -gdwarf-2 
+#CF_ALL			+= -mno-sched-prolog 
 CF_ALL			+= -fno-hosted 
-CF_ALL			+= -mtune=cortex-m3 
-CF_ALL			+= -march=armv7-m 
-CF_ALL			+= -mfix-cortex-m3-ldrd  
+#CF_ALL			+= -mtune=cortex-m3 
+#CF_ALL			+= -march=armv7-m 
+#CF_ALL			+= -mfix-cortex-m3-ldrd  
 CF_ALL			+= -ffunction-sections 
 CF_ALL			+= -fdata-sections 
 
@@ -42,8 +42,8 @@ CODESIZE 		= $(GNUTOOLS)/arm-none-eabi-size
 LF_ALL			=  -static -mcpu=cortex-m3 -mthumb -mthumb-interwork
 LF_ALL			+= -Wl,--start-group 
 LF_ALL			+= -L$(THUMB2GNULIB2)
-LF_ALL			+= -lc -lg
-LF_ALL			+= -lgcc -lm  
+#LF_ALL			+= -lc -lg
+#LF_ALL			+= -lgcc -lm  
 LF_ALL			+= -Wl,--end-group 
 
 MAP      		= -Xlinker -Map -Xlinker

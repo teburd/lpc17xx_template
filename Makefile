@@ -14,8 +14,8 @@ rom: CF_ALL += -DRAM_MODE=0
 rom: targets
 
 sim: LF_ALL += -T$(LDSIMSCRIPT)
-sim: AS_ALL += --defsym RAM_MODE=1
-sim: CF_ALL += -DRAM_MODE=1
+sim: AS_ALL += --defsym RAM_MODE=0
+sim: CF_ALL += -DRAM_MODE=0
 sim: targets
 
 include rules.mk
