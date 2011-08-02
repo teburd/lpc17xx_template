@@ -2,4 +2,7 @@
 *.un~
 *.swp
 *.a
+*.hex
+*.map
+*.elf
 

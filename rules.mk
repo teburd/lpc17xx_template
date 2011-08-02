@@ -10,8 +10,8 @@ all:		targets
 
 dir	:= cmsis
 include		$(dir)/rules.mk
-#dir	:= firmware
-#include		$(dir)/rules.mk
+dir	:= firmware
+include		$(dir)/rules.mk
 
 
 # General directory independent rules
@@ -28,7 +28,8 @@ include		$(dir)/rules.mk
 		@echo "Linking $^"
 
 %:		%.c
-		$(COMPLINK)
+		@$(COMPLINK)
+		@echo "Compiling and Linking $^"
 
 %.a:
 		@$(ARCHIVE)
