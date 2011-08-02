@@ -1,7 +1,8 @@
-LDRAMSCRIPT = 'ldscript_ram_gnu.ld'
-LDROMSCRIPT = 'ldscript_rom_gnu.ld'
-LDSIMSCRIPT = '/usr/arm-none-eabi/lib/generic-hosted.ld'
 include build.mk
+
+LDRAMSCRIPT = 'ram.ld'
+LDROMSCRIPT = 'rom.ld'
+LDSIMSCRIPT = '$(GNU_INSTALL_ROOT)/arm-none-eabi/lib/generic-hosted.ld'
 
 ram: LF_ALL += -T$(LDRAMSCRIPT)
 ram: AS_ALL += --defsym RAM_MODE=1
