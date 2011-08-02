@@ -1,8 +1,11 @@
 GNU_INSTALL_ROOT	= /usr
 GNU_VERSION 		= 4.5.2
 GNUTOOLS			='$(GNU_INSTALL_ROOT)/bin'
-THUMB2GNULIB 		='$(GNU_INSTALL_ROOT)/lib/gcc/arm-none-eabi/$(GNU_VERSION)/thumb2'
+#THUMB2GNULIB 		='$(GNU_INSTALL_ROOT)/lib/gcc/arm-none-eabi/$(GNU_VERSION)/thumb2'
 THUMB2GNULIB2		='$(GNU_INSTALL_ROOT)/arm-none-eabi/lib/thumb2'
+
+LDRAMSCRIPT = 'ldscript_ram_gnu.ld'
+LDROMSCRIPT = 'ldscript_rom_gnu.ld'
 
 CPU				= cortex-m3
 OPTIM			= 0
@@ -43,10 +46,10 @@ CODESIZE 		= $(GNUTOOLS)/arm-none-eabi-size
 #LDFLAGS 		+= -nostdlib 
 
 LF_ALL			=  -static -mcpu=cortex-m3 -mthumb -mthumb-interwork
-LF_ALL			+= -Wl,--start-group 
-LF_ALL			+= -L$(THUMB2GNULIB) -L$(THUMB2GNULIB2)
+LF_ALL			+= -T$(LDRAMSCRIPT) -Wl,--start-group 
+LF_ALL			+= -L$(THUMB2GNULIB2)
 LF_ALL			+= -lc -lg
-LF_ALL			+= -lgcc -lm 
+LF_ALL			+= -lgcc -lm  
 LF_ALL			+= -Wl,--end-group 
 
 MAP      		= -Xlinker -Map -Xlinker
