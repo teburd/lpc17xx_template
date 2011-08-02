@@ -1,11 +1,7 @@
 GNU_INSTALL_ROOT	= /usr
 GNU_VERSION 		= 4.5.2
 GNUTOOLS			='$(GNU_INSTALL_ROOT)/bin'
-#THUMB2GNULIB 		='$(GNU_INSTALL_ROOT)/lib/gcc/arm-none-eabi/$(GNU_VERSION)/thumb2'
 THUMB2GNULIB2		='$(GNU_INSTALL_ROOT)/arm-none-eabi/lib/thumb2'
-
-LDRAMSCRIPT = 'ldscript_ram_gnu.ld'
-LDROMSCRIPT = 'ldscript_rom_gnu.ld'
 
 CPU				= cortex-m3
 OPTIM			= 0
@@ -26,10 +22,8 @@ CF_ALL			+= -march=armv7-m
 CF_ALL			+= -mfix-cortex-m3-ldrd  
 CF_ALL			+= -ffunction-sections 
 CF_ALL			+= -fdata-sections 
-CF_ALL			+= -DRAM_MODE=1 
 
 AS_ALL			= -mcpu=$(CPU)
-AS_ALL			+= --defsym RAM_MODE=1 
 
 CC       		= $(GNUTOOLS)/arm-none-eabi-gcc-$(GNU_VERSION)
 AS       		= $(GNUTOOLS)/arm-none-eabi-as
@@ -46,7 +40,7 @@ CODESIZE 		= $(GNUTOOLS)/arm-none-eabi-size
 #LDFLAGS 		+= -nostdlib 
 
 LF_ALL			=  -static -mcpu=cortex-m3 -mthumb -mthumb-interwork
-LF_ALL			+= -T$(LDRAMSCRIPT) -Wl,--start-group 
+LF_ALL			+= -Wl,--start-group 
 LF_ALL			+= -L$(THUMB2GNULIB2)
 LF_ALL			+= -lc -lg
 LF_ALL			+= -lgcc -lm  
